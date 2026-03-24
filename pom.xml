@@ -138,7 +138,7 @@
 					</from>
 					<container>
 						<!-- 告訴 JVM 啟動時要執行哪個 class -->
-						<mainClass>com.nick.ai_agent.Application</mainClass>
+						<mainClass>com.nick.daily_news.DailyNewsApplication</mainClass>
 						<!-- 宣告 container 對外開放 8080 port -->
 						<ports>
 							<port>8080</port>
