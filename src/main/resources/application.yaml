@@ -1,3 +1,12 @@
 spring:
   application:
     name: daily-news
+  cloud:
+    openfeign:
+      client:
+        config:
+          newsClient:
+            url: ${NEWS_API_URL:https://newsapi.org/v2}
+
+news:
+  apiKey: e67d7a7e3d504404949507edae2657a8

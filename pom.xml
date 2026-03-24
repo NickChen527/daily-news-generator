@@ -78,7 +78,17 @@
 			<version>3.4.5</version>
 			<scope>compile</scope>
 		</dependency>
+		<!-- 加入 OpenFeign 來呼叫 NewsApi -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>4.3.0</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
+	<dependencyManagement>
+
+	</dependencyManagement>
 
 	<build>
 		<plugins>
