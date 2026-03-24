@@ -9,7 +9,7 @@ on:
 # 環境變數
 env:
   REGISTRY: ghcr.io # 指定要把成品放在 GitHub Container Repository
-  IMAGE_NAME: cicd-practice # 這是 github 的內建變數，會自動抓取專案路徑
+  IMAGE_NAME: daily-news-generator # 這是 github 的內建變數，會自動抓取專案路徑
 
 # 工作設定
 jobs:
