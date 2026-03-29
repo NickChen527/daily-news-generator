@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -13,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity // 必須加上這行，@PreAuthorize 才會生效
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -28,7 +30,11 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         // 配置授權規則
         .authorizeHttpRequests(
-            auth -> auth.requestMatchers("").permitAll().anyRequest().authenticated())
+            auth ->
+                auth.requestMatchers("/members/register", "/members/auth", "/news")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
         // 配置 Session 策略
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

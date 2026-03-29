@@ -1,8 +1,8 @@
 package com.nick.daily_news.member.repository.entity;
 
-import com.nick.daily_news.auth.Role;
+import com.nick.daily_news.enums.Role;
+import com.nick.daily_news.enums.Status;
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -41,7 +41,7 @@ public class MemberEntity implements UserDetails {
 
   /** 會員名稱 */
   @Column(name = "FULL_NAME")
-  private BigDecimal fullName;
+  private String fullName;
 
   /** 註冊時間 */
   @Column(name = "REGISTER_DATE")
@@ -51,6 +51,11 @@ public class MemberEntity implements UserDetails {
   @Column(name = "ROLE")
   @Enumerated(value = EnumType.STRING)
   private Role role;
+
+  /** 啟用狀態 */
+  @Column(name = "STATUS")
+  @Enumerated(value = EnumType.STRING)
+  private Status status;
 
   // 以下是 UserDetails 的方法
   @Override
@@ -80,6 +85,6 @@ public class MemberEntity implements UserDetails {
 
   @Override
   public boolean isEnabled() {
-    return true;
+    return Status.ACTIVE.equals(status);
   }
 }
