@@ -10,3 +10,6 @@ spring:
 
 news:
   apiKey: e67d7a7e3d504404949507edae2657a8
+
+auth:
+  secret-key: ${SECRET_KEY:2b44fc43f07531fbea72afc3a2f7ae512db5b5f64cc7e08f81e56a2af48df8cb}
