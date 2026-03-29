@@ -1,4 +1,4 @@
-package com.nick.daily_news;
+package com.nick.daily_news.news;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
