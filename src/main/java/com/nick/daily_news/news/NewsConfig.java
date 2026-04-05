@@ -1,4 +1,4 @@
-package com.nick.daily_news;
+package com.nick.daily_news.news;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
