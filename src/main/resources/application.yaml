@@ -9,7 +9,19 @@ spring:
             url: ${NEWS_API_URL:https://newsapi.org/v2}
 
 news:
-  apiKey: e67d7a7e3d504404949507edae2657a8
+  apiKey: ${NEWS_API_KEY:e67d7a7e3d504404949507edae2657a8}
 
 auth:
   secret-key: ${SECRET_KEY:2b44fc43f07531fbea72afc3a2f7ae512db5b5f64cc7e08f81e56a2af48df8cb}
+
+langchain4j:
+  google-ai-gemini:
+    chat-model:
+      model-name: gemini-2.5-flash
+      api-key: ${API_KEY}
+      temperature: 0.3
+      log-requests-and-responses: true
+
+logging:
+  level:
+    dev.langchain4j: debug

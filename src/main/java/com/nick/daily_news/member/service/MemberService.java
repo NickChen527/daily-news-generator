@@ -25,6 +25,7 @@ public class MemberService implements UserDetailsService, UserDetailsPasswordSer
   private final MemberRepository repository;
   private final PasswordEncoder encoder;
   private final JwtService jwtService;
+  private final MemberMapper mapper;
 
   /**
    * 註冊新會員
@@ -54,6 +55,14 @@ public class MemberService implements UserDetailsService, UserDetailsPasswordSer
     // 產生並回傳 JWT token
     String jwtToken = jwtService.generateToken(member);
     return AuthenticationResponse.builder().jwtToken(jwtToken).build();
+  }
+
+  public MemberVo findByEmail(String email) {
+    var member =
+        repository
+            .findByEmail(email)
+            .orElseThrow(() -> new UsernameNotFoundException("找不到 email 為：" + email + " 的會員"));
+    return mapper.fromEntity(member);
   }
 
   @Override

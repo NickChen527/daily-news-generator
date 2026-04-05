@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class NewsResponse {
+public class NewsApiResponse {
   private String status;
   private Long totalResults;
   private List<Article> articles;

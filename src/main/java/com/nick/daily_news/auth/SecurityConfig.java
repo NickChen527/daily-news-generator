@@ -29,12 +29,7 @@ public class SecurityConfig {
         // 停用 CSRF
         .csrf(AbstractHttpConfigurer::disable)
         // 配置授權規則
-        .authorizeHttpRequests(
-            auth ->
-                auth.requestMatchers("/members/register", "/members/auth", "/news")
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated())
+        .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
         // 配置 Session 策略
         .sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

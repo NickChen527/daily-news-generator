@@ -1,5 +1,6 @@
 package com.nick.daily_news.member.repository.entity;
 
+import com.nick.daily_news.enums.Interest;
 import com.nick.daily_news.enums.Role;
 import com.nick.daily_news.enums.Status;
 import jakarta.persistence.*;
@@ -56,6 +57,10 @@ public class MemberEntity implements UserDetails {
   @Column(name = "STATUS")
   @Enumerated(value = EnumType.STRING)
   private Status status;
+
+  /** 感興趣領域 */
+  @Column(name = "INTERESTS")
+  private List<Interest> interests;
 
   // 以下是 UserDetails 的方法
   @Override

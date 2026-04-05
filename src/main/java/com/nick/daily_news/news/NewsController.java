@@ -11,10 +11,21 @@ public class NewsController {
 
   private final NewsApiClient client;
   private final NewsConfig config;
+  private final NewsService newsService;
 
   @GetMapping("/news")
   @PreAuthorize("hasRole('MEMBER')")
-  public NewsResponse getNews() {
+  public NewsApiResponse getNews() {
     return client.getNews("us", config.getApiKey());
+  }
+
+  public void generateEmail() {
+    String email = "";
+
+    // 根據用戶感興趣的領域抓相關新聞
+    var news = newsService.getNewsByMemberInterest(email);
+    // 將這些新聞的內容送給AI做摘要
+    // 將生成的摘要填入信件模板
+    // 發信
   }
 }
